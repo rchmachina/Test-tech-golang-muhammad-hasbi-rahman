@@ -1,5 +1,10 @@
 package model
 
+type LoginUser struct {
+	Email string `json:"email"`
+	Password string `json:"password"`
+}
+
 type GetAllPhonebook []struct {
 	Id          string `json:"id"`
 	NumberPhone string `json:"numberPhone"`

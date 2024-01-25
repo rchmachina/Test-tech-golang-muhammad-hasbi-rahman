@@ -8,8 +8,11 @@ const Redirect = () => {
 
       const urlParams = new URLSearchParams(window.location.search);
       const accessToken = urlParams.get('accessToken');
+      const tokenNonAuth= urlParams.get('tokenNonAuth');
+
       await sessionStorage.setItem('token', JSON.stringify(accessToken));
-      await navigate("/contact");
+      await sessionStorage.setItem('tokenNonAuth', JSON.stringify(tokenNonAuth));
+      navigate("/");
       window.location.reload();
     };
 

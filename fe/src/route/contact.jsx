@@ -20,11 +20,7 @@ const Contact = () => {
     isOpen: false,
   });
 
-  
 
-  const [formData, setFormData] = useState({
-    noHp: "",
-  });
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -47,6 +43,13 @@ const Contact = () => {
       isOpen: false,
     }));
   };
+    
+
+  const [formData, setFormData] = useState({
+    noHp: "",
+  });
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 

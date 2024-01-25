@@ -8,14 +8,17 @@ const baseUrl = import.meta.env.VITE_API_URL;
 // Usage example
 
 
-const userDataString = sessionStorage.getItem('token');
-const auth = userDataString ? JSON.parse(userDataString) : "";
+const tokenOauth = sessionStorage.getItem('token');
+const tokenNonOauth = sessionStorage.getItem('tokenNonAuth');
+console.log(tokenNonOauth);
+const auth = tokenOauth !== "null" ? JSON.parse(tokenOauth) : (tokenNonOauth !== "null" ? JSON.parse(tokenNonOauth) : "");
 
+console.log(auth)
 
 const config = {
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': auth, // Add any additional headers as needed
+    'Authorization': auth,
   },
 };
 

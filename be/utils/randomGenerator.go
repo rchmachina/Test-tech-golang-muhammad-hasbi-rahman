@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"encoding/base64"
 	"fmt"
 	"math/rand"
 	"time"
@@ -35,4 +36,28 @@ func GenerateRandomNumber() string {
 
 	return "08" + numb
 }
+
+func GenerateRandomToken(length int) (string, error) {
+	// Determine the size of the byte slice needed for the given length
+	byteLength := (length * 3) / 4
+	if length%4 != 0 {
+		byteLength++
+	}
+
+	// Generate random bytes
+	randomBytes := make([]byte, byteLength)
+	_, err := rand.Read(randomBytes)
+	if err != nil {
+		return "", err
+	}
+
+	// Encode the random bytes to base64
+	token := base64.URLEncoding.EncodeToString(randomBytes)
+
+	// Trim any padding '=' characters
+	token = token[:length]
+
+	return token, nil
+}
+
 
